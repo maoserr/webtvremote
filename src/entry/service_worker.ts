@@ -7,6 +7,7 @@ function set_badge() {
     browser.action.setBadgeText({text: "d"}).then().catch(() => {
     });
   }
+  browser.runtime.openOptionsPage().then()
 }
 
 browser.runtime.onStartup.addListener(set_badge)

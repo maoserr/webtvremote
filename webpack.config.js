@@ -45,7 +45,6 @@ function modify_manifest(buffer, browser_type, version, mode) {
         }
     } else {
         // Chrome specific
-        manifest.sandbox = {"pages": ["sandbox.html"]};
         manifest.background = {
             service_worker: "js/service_worker.js"
         }
@@ -132,13 +131,14 @@ module.exports = (env, argv) => {
                 template: 'templates/options.html'
             }),
             new HtmlWebpackPlugin({
-                chunks: ['sidebar'],
-                filename: 'sidebar.html',
-                template: 'templates/sidebar.html'
+                chunks: ['home'],
+                filename: 'home.html',
+                template: 'templates/home.html'
             }),
             new webpack.DefinePlugin({
                 __VUE_OPTIONS_API__: "true",
                 __VUE_PROD_DEVTOOLS__: "false",
+                __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "false"
             }),
             new CopyPlugin({
                 patterns: [
