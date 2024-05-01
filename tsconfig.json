@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "commonjs",
+    "strict": true,
+    "noImplicitThis": true,
+    "esModuleInterop": true
+  },
+  "baseUrl": "./src",
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.vue"
+  ],
+  "exclude": [
+    "./node_modules/",
+    "./test/",
+    "./old/",
+    "./int_tests/"
+  ]
+}
