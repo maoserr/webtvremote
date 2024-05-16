@@ -1,11 +1,22 @@
 import browser, {Tabs} from "webextension-polyfill";
 
-function set_badge() {
+async function set_badge() {
   const man = browser.runtime.getManifest()
   console.info("Setting badge text")
   if (man.version == "1.0.0") {
     browser.action.setBadgeText({text: "d"}).then().catch(() => {
     });
+  }
+  const aScript = {
+    id: "content",
+    js: ["js/content.js"],
+    matches: ["https://www.twitch.tv/*"],
+  };
+
+  try {
+    await browser.scripting.registerContentScripts([aScript]);
+  } catch (err) {
+    console.error(`failed to register content scripts: ${err}`);
   }
   browser.runtime.openOptionsPage().then()
 }

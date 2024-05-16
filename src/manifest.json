@@ -1,6 +1,8 @@
 {
   "name": "WebTVRemote",
   "permissions": [
+    "activeTab",
+    "scripting",
     "storage"],
   "options_ui": {
     "open_in_tab": true,
