@@ -10,7 +10,7 @@ async function set_badge() {
   const aScript = {
     id: "content",
     js: ["js/content.js"],
-    matches: ["https://www.twitch.tv/*"],
+    matches: ["https://*/*"],
   };
 
   try {
