@@ -87,6 +87,8 @@ jobs:
   publish_release:
     needs: [ build_firefox, build_chrome ]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Download extension
