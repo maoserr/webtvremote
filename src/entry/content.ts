@@ -8,9 +8,9 @@ window.addEventListener("keydown", (event: KeyboardEvent) => {
   console.log(event.key)
   if (event.key == 'ArrowDown') {
     event.preventDefault()
-    getSelEls(document)
+    getSelEls(document, "down")
   } else if (event.key == 'ArrowUp'){
     event.preventDefault()
-    getSelEls(document)
+    getSelEls(document, "up")
   }
 });
