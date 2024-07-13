@@ -6,6 +6,9 @@
     <div class="col-3">
       <a href="https://www.youtube.com">Youtube</a>
     </div>
+    <div class="col-3">
+      <a href="options.html">Options</a>
+    </div>
     <div class="col-12">
       {{ logs }}
     </div>
@@ -28,7 +31,7 @@ onMounted(async () => {
     logs.value += event.key + "\n"
     if (event.key == 'ArrowDown') {
       event.preventDefault()
-      getSelEls(document, "down")
+      getSelEls(document, window,"down")
     }
   });
 })

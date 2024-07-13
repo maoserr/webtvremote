@@ -5,6 +5,6 @@
     "storage"],
   "options_ui": {
     "open_in_tab": true,
-    "page": "home.html"
+    "page": "main.html"
   }
 }
