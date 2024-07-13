@@ -36,7 +36,7 @@ function modify_manifest(buffer, browser_type, version, mode) {
         // Firefox specific
         manifest.browser_specific_settings = {
             "gecko": {
-                "id": "epublifier@maoserr.com"
+                "id": "webtvremote@maoserr.com"
             }
         }
         manifest.options_ui.open_in_tab = true
@@ -128,12 +128,12 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 chunks: ['options'],
                 filename: 'options.html',
-                template: 'templates/options.html'
+                template: 'templates/default.html'
             }),
             new HtmlWebpackPlugin({
-                chunks: ['home'],
-                filename: 'home.html',
-                template: 'templates/home.html'
+                chunks: ['main'],
+                filename: 'main.html',
+                template: 'templates/default.html'
             }),
             new webpack.DefinePlugin({
                 __VUE_OPTIONS_API__: "true",
