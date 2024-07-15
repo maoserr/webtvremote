@@ -45,23 +45,23 @@ jobs:
           name: firefox
           path: dist/firefox_prod/firefox.zip
 
-#  publish_chrome:
-#    needs: build_chrome
-#    runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/master'
-#    steps:
-#      - name: Download extension
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: chrome
-#      - name: Publish Chrome
-#        uses: maoserr/chrome_extension_publish@v1.0.3
-#        with:
-#          chrome_extension_id: eopjnahefjhnhfanplcjpbbdkpbagikk
-#          client_id: ${{ secrets.CHROME_CLIENT_ID }}
-#          refresh_token: ${{ secrets.CHROME_REFRESH_TOKEN }}
-#          client_secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-#          file: chrome.zip
+  publish_chrome:
+    needs: build_chrome
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Download extension
+        uses: actions/download-artifact@v4
+        with:
+          name: chrome
+      - name: Publish Chrome
+        uses: maoserr/chrome_extension_publish@v1.0.3
+        with:
+          chrome_extension_id: ocjgpmhfpnjinnonlaljhelgccinoome
+          client_id: ${{ secrets.CHROME_CLIENT_ID }}
+          refresh_token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          client_secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          file: chrome.zip
 #
 #  publish_firefox:
 #    needs: build_firefox
