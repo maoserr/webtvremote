@@ -11,19 +11,21 @@
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 import {onMounted, Ref, ref} from "vue";
-import {getSelEls} from "../services/selectable";
+import {procKeyEvent} from "../services/selectable";
+import {getKeybinds} from "../services/useropts";
 
 const logs = ref<string>('')
 
 onMounted(async () => {
-  window.addEventListener("keydown", (event: KeyboardEvent) => {
-    // do something
-    logs.value += event.key + "\n"
-    if (event.key == 'ArrowDown') {
-      event.preventDefault()
-      getSelEls(document, window,"down")
-    }
-  });
+  let keybind = await getKeybinds()
+  window.addEventListener("keydown",
+      (event: KeyboardEvent) => {
+        console.log(event.key)
+        if (event.key in keybind) {
+          event.preventDefault()
+          procKeyEvent(keybind[event.key], document, window)
+        }
+      });
 })
 
 </script>

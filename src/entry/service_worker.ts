@@ -1,4 +1,4 @@
-import browser, {Tabs} from "webextension-polyfill";
+import browser from "webextension-polyfill";
 
 async function set_badge() {
   const man = browser.runtime.getManifest()
