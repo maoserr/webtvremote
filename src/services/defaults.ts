@@ -10,6 +10,7 @@ export const keybinds: Record<string, Keybind> = {
   'ArrowUp': Keybind.prev,
   'ArrowRight': Keybind.grpNext,
   'ArrowLeft': Keybind.grpPrev,
+  'Home': Keybind.home,
 }
 
 export const config: WebPageDef[] = [

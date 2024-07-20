@@ -10,6 +10,7 @@ export enum Keybind {
   prev = "prev",
   grpNext = "grpNext",
   grpPrev = "grpPrev",
+  home = "Home",
 }
 
 // === Web page definition ===

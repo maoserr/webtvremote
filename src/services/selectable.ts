@@ -1,5 +1,6 @@
 import {getDefinitions} from "./useropts";
 import {Keybind, Selectables, SelectorDef, WebPageDef} from "./datatypes";
+import browser from "webextension-polyfill";
 
 let last_grp = 0
 
@@ -78,6 +79,9 @@ export async function procKeyEvent(keybind: Keybind, doc: Document, win: Window)
 
   try {
     switch (keybind) {
+      case Keybind.home:
+        browser.runtime.sendMessage({cmd: 'home'})
+        break;
       case Keybind.next:
         if (elIndex + 1 == selGrps[grpIndex].elements.length) {
           if (grpIndex + 1 == selGrps.length) {
