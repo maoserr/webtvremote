@@ -4,6 +4,7 @@ export let all = [
 ]
 
 export let twitch = [
+  'button[aria-label="Close"]',
   'button[data-a-target="player-play-pause-button"]',
   'button[data-a-target="player-fullscreen-button"]',
   'button[data-a-target="mini-overlay-play-pause-button"]',

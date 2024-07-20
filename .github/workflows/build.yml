@@ -62,27 +62,27 @@ jobs:
           refresh_token: ${{ secrets.CHROME_REFRESH_TOKEN }}
           client_secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           file: chrome.zip
-#
-#  publish_firefox:
-#    needs: build_firefox
-#    runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/master'
-#    steps:
-#      - uses: actions/checkout@v4
-#      - name: Zip source
-#        run: zip -qq -r src.zip *
-#      - name: Download extension
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: firefox
-#      - name: Publish Firefox
-#        uses: maoserr/firefox_extension_publish@v1.0.4
-#        with:
-#          firefox_extension_id: epublifier@maoserr.com
-#          api_key: ${{ secrets.FIREFOX_API_KEY }}
-#          api_secret: ${{ secrets.FIREFOX_API_SECRET }}
-#          file: firefox.zip
-#          src_file: src.zip
+
+  publish_firefox:
+    needs: build_firefox
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zip source
+        run: zip -qq -r src.zip *
+      - name: Download extension
+        uses: actions/download-artifact@v4
+        with:
+          name: firefox
+      - name: Publish Firefox
+        uses: maoserr/firefox_extension_publish@v1.0.4
+        with:
+          firefox_extension_id: webtvremote@maoserr.com
+          api_key: ${{ secrets.FIREFOX_API_KEY }}
+          api_secret: ${{ secrets.FIREFOX_API_SECRET }}
+          file: firefox.zip
+          src_file: src.zip
 
   publish_release:
     needs: [ build_firefox, build_chrome ]
