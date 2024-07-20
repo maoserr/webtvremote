@@ -52,6 +52,16 @@ export const config: WebPageDef[] = [
     ]
   },
   {
+    name: 'Youtube',
+    filts: [{hosts: ['youtube.com']}],
+    seldefs: [
+      {name: 'menu', selectors: ['a#endpoint']},
+      {name: 'chips', selectors: ['yt-chip-cloud-chip-renderer']},
+      {name: 'thumbs', selectors: ['div#content a.ytd-thumbnail, div#content a.ytd-playlist-thumbnail']},
+      {name: 'playlists', selectors: ['yt-thumbnail-view-model']},
+    ]
+  },
+  {
     name: 'any', filts: [{hosts: ['.*']}], seldefs: [
       {
         name: 'actionable', selectors: [

@@ -80,7 +80,7 @@ export async function procKeyEvent(keybind: Keybind, doc: Document, win: Window)
   try {
     switch (keybind) {
       case Keybind.home:
-        browser.runtime.sendMessage({cmd: 'home'})
+        await browser.runtime.sendMessage({cmd: 'home'})
         break;
       case Keybind.next:
         if (elIndex + 1 == selGrps[grpIndex].elements.length) {
