@@ -1,4 +1,4 @@
-import browser, {Tabs} from "webextension-polyfill";
+import browser from "webextension-polyfill";
 
 async function set_badge() {
   const man = browser.runtime.getManifest()
@@ -9,11 +9,6 @@ async function set_badge() {
   }
 
   console.info("Registering click handler")
-  browser.action.onClicked.addListener(async (tab) => {
-    browser.runtime.openOptionsPage().then()
-    await browser.windows.update((await browser.windows.getCurrent()).id!, {state: "fullscreen"})
-  });
-
   try {
     await browser.scripting.registerContentScripts([{
       id: "remoteHandler",
@@ -23,11 +18,45 @@ async function set_badge() {
   } catch (err) {
     console.error(`failed to register content scripts: ${err}`);
   }
-  browser.runtime.openOptionsPage().then()
+  // browser.runtime.openOptionsPage().then()
   setTimeout(async ()=> {
+    console.log("Going home..")
+    let home = browser.runtime.getURL('main.html')
+    await browser.tabs.update({url: home})
     await browser.windows.update((await browser.windows.getCurrent()).id!, {state: "fullscreen"})
   },500)
 }
 
+async function msg_proc(data: any) {
+  switch (data.cmd) {
+    case "home": {
+      console.log("Going home..")
+      let home = browser.runtime.getURL('main.html')
+      await browser.tabs.update({url: home})
+      break;
+    }
+    case "report": {
+      const ext = browser.runtime.getManifest()
+      const browser_name = ('browser_specific_settings' in ext) ? "Firefox" : "Chrome"
+      await browser.tabs.create({
+        url: 'https://github.com/maoserr/epublifier/issues/new?'
+          + 'assignees=maoserr&labels=bug&projects=&template=bug_report.md&'
+          + 'title=%5BBUG%5D+New+bug:+' + encodeURIComponent(data.origin) + '&body=**Describe the bug**%0A'
+          + 'A clear and concise description of what the bug is.%0A%0A'
+          + '**Required info (please complete the following information):**%0A'
+          + ' - Url: ' + encodeURIComponent(data.origin) + '%0A'
+          + ' - Browser: ' + encodeURIComponent(browser_name) + '%0A'
+          + ' - Extension Version: ' + encodeURIComponent(ext.version)
+      })
+      break;
+    }
+  }
+}
+browser.action.onClicked.addListener( (tab) => {
+  console.log("Going home..")
+  let home = browser.runtime.getURL('main.html')
+  browser.tabs.update({url: home}).then()
+});
 browser.runtime.onStartup.addListener(set_badge)
 browser.runtime.onInstalled.addListener(set_badge)
+browser.runtime.onMessage.addListener(msg_proc)
