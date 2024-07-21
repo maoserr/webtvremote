@@ -20,6 +20,7 @@ export enum Keybind {
 export interface SelectorDef {
   name: string; // Name for this grouping
   selectors: string[]; // List of valid selectors
+  scrollMargin?: number
 }
 
 /**

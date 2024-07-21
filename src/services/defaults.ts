@@ -79,8 +79,11 @@ export const config: WebPageDef[] = [
         ]
       },
       {name: 'chips', selectors: ['yt-chip-cloud-chip-renderer']},
-      {name: 'thumbs', selectors: ['div#content a.ytd-thumbnail, div#content a.ytd-playlist-thumbnail']},
-      {name: 'playlists', selectors: ['yt-thumbnail-view-model']},
+      {name: 'thumbs', selectors: [
+        'div#content a.ytd-thumbnail, div#content a.ytd-playlist-thumbnail']
+      },
+      {name: 'playlists', selectors: ['yt-thumbnail-view-model']
+      },
     ]
   },
   {

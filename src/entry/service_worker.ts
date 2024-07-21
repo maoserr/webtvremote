@@ -1,13 +1,6 @@
 import browser from "webextension-polyfill";
 
-async function set_startup() {
-  const man = browser.runtime.getManifest()
-  console.info("Setting badge text")
-  if (man.version == "1.0.0") {
-    browser.action.setBadgeText({text: "d"}).then().catch(() => {
-    });
-  }
-
+async function register_script(){
   try {
     let registered = await browser.scripting.getRegisteredContentScripts({ids: ["remoteHandler"],})
     if (registered.length < 1) {
@@ -22,6 +15,17 @@ async function set_startup() {
   } catch (err) {
     console.error(`failed to register content scripts: ${err}`);
   }
+}
+
+async function set_startup() {
+  const man = browser.runtime.getManifest()
+  console.info("Setting badge text")
+  if (man.version == "1.0.0") {
+    browser.action.setBadgeText({text: "d"}).then().catch(() => {
+    });
+  }
+
+  await register_script()
   // browser.runtime.openOptionsPage().then()
   setTimeout(async ()=> {
     console.log("Going home..")
@@ -57,6 +61,7 @@ async function msg_proc(data: any) {
     }
   }
 }
+
 browser.action.onClicked.addListener( (tab) => {
   console.log("Going home..")
   let home = browser.runtime.getURL('main.html')

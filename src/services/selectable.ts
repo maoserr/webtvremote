@@ -134,6 +134,7 @@ async function procFocusChange(keybind: Keybind, doc: Document, win: Window) {
   console.log(focusEl)
   if (focusEl !== undefined) {
     focusEl.focus()
+    focusEl.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"})
   }
 }
 
