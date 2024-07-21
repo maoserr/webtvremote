@@ -57,11 +57,8 @@ export const config: WebPageDef[] = [
     seldefs: [
       {name: 'menu', selectors: [
         'div#start > yt-icon-button#guide-button > button.yt-icon-button',
-        'a#endpoint'
+        'div#contentContainer[opened] a#endpoint'
         ]},
-      {name: 'chips', selectors: ['yt-chip-cloud-chip-renderer']},
-      {name: 'thumbs', selectors: ['div#content a.ytd-thumbnail, div#content a.ytd-playlist-thumbnail']},
-      {name: 'playlists', selectors: ['yt-thumbnail-view-model']},
       {
         name: 'controls', selectors: [
           'div.ytp-left-controls > button.ytp-play-button',
@@ -69,6 +66,9 @@ export const config: WebPageDef[] = [
           'div.ytp-right-controls > button.ytp-fullscreen-button'
         ]
       },
+      {name: 'chips', selectors: ['yt-chip-cloud-chip-renderer']},
+      {name: 'thumbs', selectors: ['div#content a.ytd-thumbnail, div#content a.ytd-playlist-thumbnail']},
+      {name: 'playlists', selectors: ['yt-thumbnail-view-model']},
     ]
   },
   {
