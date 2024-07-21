@@ -1,12 +1,6 @@
 import browser from "webextension-polyfill";
 
 async function set_startup() {
-  browser.action.onClicked.addListener( (tab) => {
-    console.log("Going home..")
-    let home = browser.runtime.getURL('main.html')
-    browser.tabs.update({url: home}).then()
-  });
-
   const man = browser.runtime.getManifest()
   console.info("Setting badge text")
   if (man.version == "1.0.0") {
@@ -43,6 +37,7 @@ async function msg_proc(data: any) {
       console.log("Going home..")
       let home = browser.runtime.getURL('main.html')
       await browser.tabs.update({url: home})
+      await browser.windows.update((await browser.windows.getCurrent()).id!, {state: "fullscreen"})
       break;
     }
     case "report": {
@@ -62,7 +57,11 @@ async function msg_proc(data: any) {
     }
   }
 }
-
+browser.action.onClicked.addListener( (tab) => {
+  console.log("Going home..")
+  let home = browser.runtime.getURL('main.html')
+  browser.tabs.update({url: home}).then()
+});
 browser.runtime.onStartup.addListener(set_startup)
 browser.runtime.onInstalled.addListener(set_startup)
 browser.runtime.onMessage.addListener(msg_proc)
