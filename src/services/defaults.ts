@@ -11,6 +11,7 @@ export const keybinds: Record<string, Keybind> = {
   'ArrowRight': Keybind.grpNext,
   'ArrowLeft': Keybind.grpPrev,
   'Home': Keybind.home,
+  'BrowserHome': Keybind.home,
 }
 
 export const config: WebPageDef[] = [
@@ -18,9 +19,15 @@ export const config: WebPageDef[] = [
     name: 'Twitch',
     filts: [{hosts: ['twitch.tv']}],
     seldefs: [
-      {name: 'close', selectors: ['button[aria-label="Close"]']},
+      {
+        name: 'close', selectors: [
+          'button[aria-label="Close"]',
+          'button[aria-label="Dismiss Mini Player"]',
+        ]
+      },
       {
         name: 'player', selectors: [
+          'button[data-a-target="mini-overlay-play-pause-button"]',
           'button[data-a-target="player-play-pause-button"]',
           'button[data-a-target="player-fullscreen-button"]',
           'button[data-a-target="mini-overlay-play-pause-button"]',
@@ -55,12 +62,17 @@ export const config: WebPageDef[] = [
     name: 'Youtube',
     filts: [{hosts: ['youtube.com']}],
     seldefs: [
-      {name: 'menu', selectors: [
-        'div#start > yt-icon-button#guide-button > button.yt-icon-button',
-        'div#contentContainer[opened] a#endpoint'
-        ]},
+      {
+        name: 'menu', selectors: [
+          'div#start > yt-icon-button#guide-button > button.yt-icon-button',
+          'div#contentContainer[opened] a#endpoint'
+        ]
+      },
       {
         name: 'controls', selectors: [
+          'div.ytp-miniplayer-scrim > button.ytp-miniplayer-close-button',
+          'div.ytp-miniplayer-scrim > button.ytp-miniplayer-expand-watch-page-button',
+          'div.ytp-miniplayer-play-button-container > button.ytp-play-button',
           'div.ytp-left-controls > button.ytp-play-button',
           'div.ytp-right-controls > button.ytp-size-button',
           'div.ytp-right-controls > button.ytp-fullscreen-button'
