@@ -42,7 +42,7 @@ function getSelectables(doc: Document, sels: SelectorDef[]): Selectables[] {
     for (let els of grpEls) {
       let currels = Array.prototype.filter.call(els,
         function (element) {
-          return element.offsetWidth > 0 || element.offsetHeight > 0 || element === doc.activeElement
+          return true //element.offsetWidth > 0 || element.offsetHeight > 0 || element === doc.activeElement
         })
       grpFilted = grpFilted.concat(currels)
     }
