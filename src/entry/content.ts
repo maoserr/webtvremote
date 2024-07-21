@@ -9,9 +9,10 @@ async function setUp() {
       console.log(event.key)
       if (event.key in keybind) {
         event.preventDefault()
+        event.stopImmediatePropagation()
         procKeyEvent(keybind[event.key], document, window)
       }
-    });
+    }, {capture:true});
 }
 
 setUp().then()

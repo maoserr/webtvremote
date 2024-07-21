@@ -1,6 +1,12 @@
 import browser from "webextension-polyfill";
 
-async function set_badge() {
+async function set_startup() {
+  browser.action.onClicked.addListener( (tab) => {
+    console.log("Going home..")
+    let home = browser.runtime.getURL('main.html')
+    browser.tabs.update({url: home}).then()
+  });
+
   const man = browser.runtime.getManifest()
   console.info("Setting badge text")
   if (man.version == "1.0.0") {
@@ -8,13 +14,17 @@ async function set_badge() {
     });
   }
 
-  console.info("Registering click handler")
   try {
-    await browser.scripting.registerContentScripts([{
-      id: "remoteHandler",
-      js: ["js/content.js"],
-      matches: ["https://*/*"],
-    }]);
+    let registered = await browser.scripting.getRegisteredContentScripts({ids: ["remoteHandler"],})
+    if (registered.length < 1) {
+      console.info("Registering click handler")
+      await browser.scripting.registerContentScripts([{
+        id: "remoteHandler",
+        js: ["js/content.js"],
+        matches: ["https://*/*"],
+        runAt: "document_start"
+      }]);
+    }
   } catch (err) {
     console.error(`failed to register content scripts: ${err}`);
   }
@@ -52,11 +62,7 @@ async function msg_proc(data: any) {
     }
   }
 }
-browser.action.onClicked.addListener( (tab) => {
-  console.log("Going home..")
-  let home = browser.runtime.getURL('main.html')
-  browser.tabs.update({url: home}).then()
-});
-browser.runtime.onStartup.addListener(set_badge)
-browser.runtime.onInstalled.addListener(set_badge)
+
+browser.runtime.onStartup.addListener(set_startup)
+browser.runtime.onInstalled.addListener(set_startup)
 browser.runtime.onMessage.addListener(msg_proc)

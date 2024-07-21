@@ -59,13 +59,14 @@ function getSelectables(doc: Document, sels: SelectorDef[]): Selectables[] {
   return allEls
 }
 
-export async function procKeyEvent(keybind: Keybind, doc: Document, win: Window) {
+async function procFocusChange(keybind: Keybind, doc: Document, win: Window) {
   const page = await idWebpage(doc, win)
   let selGrps = getSelectables(doc, page.seldefs)
   let grpIndex = 0
   let elIndex = -1
   if (doc.activeElement !== null) {
-    let grpIdices = selGrps.map(s => s.elements.indexOf(doc.activeElement as HTMLElement))
+    let grpIdices = selGrps.map(s =>
+      s.elements.indexOf(doc.activeElement as HTMLElement))
     let grpIdx = grpIdices.filter(i => i > -1)
     if (grpIdx.length > 0) {
       if ((grpIdx.length > 1) && (grpIdices[last_grp] > -1)) {
@@ -77,48 +78,74 @@ export async function procKeyEvent(keybind: Keybind, doc: Document, win: Window)
     }
   }
 
+  let focusEl: HTMLElement | undefined
+  let cycledGrp = 0
+  let cycledEl = 0
+  switch (keybind) {
+    case Keybind.next:
+      if (elIndex + 1 == selGrps[grpIndex].elements.length) {
+        if (grpIndex + 1 == selGrps.length) {
+          console.debug("Cycled start group.")
+        } else {
+          cycledGrp = grpIndex + 1
+          console.debug("Cycled next group.")
+        }
+      } else {
+        cycledEl = elIndex + 1
+        cycledGrp = grpIndex
+        console.debug("Normal next")
+      }
+      break;
+    case Keybind.prev:
+      if (elIndex == 0) {
+        if (grpIndex == 0) {
+          cycledGrp = selGrps.length - 1
+          console.debug("Cycle end group.")
+        } else {
+          cycledGrp = grpIndex - 1
+          console.debug("Cycle prev group")
+        }
+        cycledEl = selGrps[cycledGrp].elements.length - 1
+      } else {
+        cycledGrp = grpIndex
+        cycledEl = elIndex - 1
+        console.debug("Normal prev")
+      }
+      break;
+    case Keybind.grpNext:
+      if (grpIndex + 1 == selGrps.length) {
+        console.debug("Cycle group start group")
+      } else {
+        cycledGrp = grpIndex + 1
+        console.debug("Cycle group normal next")
+      }
+      break;
+    case Keybind.grpPrev:
+      if (grpIndex == 0) {
+        cycledGrp = selGrps.length - 1
+        console.debug("Cycle group end group")
+      } else {
+        cycledGrp = grpIndex - 1
+        console.debug("Cycle group normal prev")
+      }
+      break;
+  }
+  focusEl = selGrps[cycledGrp].elements[cycledEl]
+  console.log(focusEl)
+  if (focusEl !== undefined) {
+    focusEl.focus()
+  }
+}
+
+export async function procKeyEvent(keybind: Keybind, doc: Document, win: Window) {
+  if ([Keybind.next, Keybind.prev, Keybind.grpNext, Keybind.grpPrev].includes(keybind)) {
+    return await procFocusChange(keybind, doc, win)
+  }
+
   try {
     switch (keybind) {
       case Keybind.home:
-        browser.runtime.sendMessage({cmd: 'home'})
-        break;
-      case Keybind.next:
-        if (elIndex + 1 == selGrps[grpIndex].elements.length) {
-          if (grpIndex + 1 == selGrps.length) {
-            selGrps[0].elements[0].focus()
-            last_grp = 0
-          } else {
-            selGrps[grpIndex + 1].elements[0].focus()
-          }
-        } else {
-          selGrps[grpIndex].elements[elIndex + 1].focus()
-        }
-        break;
-      case Keybind.prev:
-        if (elIndex == 0) {
-          if (grpIndex == 0) {
-            const end_grp = selGrps[selGrps.length - 1]
-            end_grp.elements[end_grp.elements.length - 1].focus()
-          } else {
-            selGrps[grpIndex - 1].elements[selGrps[grpIndex - 1].elements.length - 1].focus()
-          }
-        } else {
-          selGrps[grpIndex].elements[elIndex - 1].focus()
-        }
-        break;
-      case Keybind.grpNext:
-        if (grpIndex + 1 == selGrps.length) {
-          selGrps[0].elements[0].focus()
-        } else {
-          selGrps[grpIndex + 1].elements[0].focus()
-        }
-        break;
-      case Keybind.grpPrev:
-        if (grpIndex == 0) {
-          selGrps[selGrps.length - 1].elements[0].focus()
-        } else {
-          selGrps[grpIndex - 1].elements[0].focus()
-        }
+        await browser.runtime.sendMessage({cmd: 'home'})
         break;
     }
   } catch (e) {
