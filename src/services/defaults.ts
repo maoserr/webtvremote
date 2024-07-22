@@ -43,13 +43,15 @@ export const config: WebPageDef[] = [
         name: 'sidenav', selectors: [
           'button[data-a-target="side-nav-arrow"]',
           'a.side-nav-card',
-        ]
+        ],
+        scrollIntoView: "center"
       },
       {
         name: 'browser', selectors: [
           'div.tw-hover-accent-effect a',
           'a.game-card__link',
-        ]
+        ],
+        scrollIntoView: "center"
       },
       {
         name: 'chat', selectors: [
@@ -66,7 +68,8 @@ export const config: WebPageDef[] = [
         name: 'menu', selectors: [
           'div#start > yt-icon-button#guide-button > button.yt-icon-button',
           'div#contentContainer[opened] a#endpoint'
-        ]
+        ],
+        scrollIntoView: "center"
       },
       {
         name: 'controls', selectors: [
@@ -80,9 +83,11 @@ export const config: WebPageDef[] = [
       },
       {name: 'chips', selectors: ['yt-chip-cloud-chip-renderer']},
       {name: 'thumbs', selectors: [
-        'div#content a.ytd-thumbnail, div#content a.ytd-playlist-thumbnail']
+        'div#content a.ytd-thumbnail, div#content a.ytd-playlist-thumbnail'],
+        scrollIntoView: "center"
       },
-      {name: 'playlists', selectors: ['yt-thumbnail-view-model']
+      {name: 'playlists', selectors: ['yt-thumbnail-view-model'],
+        scrollIntoView: "center"
       },
     ]
   },

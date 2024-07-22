@@ -134,7 +134,13 @@ async function procFocusChange(keybind: Keybind, doc: Document, win: Window) {
   console.log(focusEl)
   if (focusEl !== undefined) {
     focusEl.focus()
-    focusEl.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"})
+    let def = page.seldefs.filter(s=>selGrps[cycledGrp].name == s.name)[0]
+    if (def.scrollIntoView) {
+      focusEl.scrollIntoView({
+        behavior: "smooth",
+        block: def.scrollIntoView, inline: "nearest"
+      })
+    }
   }
 }
 
