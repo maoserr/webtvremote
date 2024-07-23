@@ -2,9 +2,13 @@
 
 Control streaming websites with keyboard/remote.
 
+This extension just displays the native web browser view and allows you to navigate through links with Arrow keys & Enter. 
+Minimal compatibility problems and you are already familiar with how to navigate & login.
+
 ## Installation ##
 
 Chrome: https://chromewebstore.google.com/detail/webtvremote/ocjgpmhfpnjinnonlaljhelgccinoome
+
 Firefox: https://addons.mozilla.org/en-US/firefox/addon/web-tv-remote/
 
 ## Usage ##
