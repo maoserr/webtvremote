@@ -76,6 +76,8 @@ export const config: WebPageDef[] = [
           'div.ytp-miniplayer-scrim > button.ytp-miniplayer-close-button',
           'div.ytp-miniplayer-scrim > button.ytp-miniplayer-expand-watch-page-button',
           'div.ytp-miniplayer-play-button-container > button.ytp-play-button',
+          'div#player button.ytp-large-play-button',
+          'div#full-bleed-container button.ytp-large-play-button',
           'div.ytp-left-controls > button.ytp-play-button',
           'div.ytp-right-controls > button.ytp-size-button',
           'div.ytp-right-controls > button.ytp-fullscreen-button'
