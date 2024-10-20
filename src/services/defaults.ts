@@ -26,14 +26,6 @@ export const config: WebPageDef[] = [
         ]
       },
       {
-        name: 'player', selectors: [
-          'button[data-a-target="mini-overlay-play-pause-button"]',
-          'button[data-a-target="player-play-pause-button"]',
-          'button[data-a-target="player-fullscreen-button"]',
-          'button[data-a-target="mini-overlay-play-pause-button"]',
-        ]
-      },
-      {
         name: 'topnav', selectors: [
           'a[data-a-target="following-link"]',
           'a[data-a-target="browse-link"]',

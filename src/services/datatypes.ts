@@ -38,7 +38,11 @@ export interface Identifier {
 export interface WebPageDef {
   name: string; // Name for this definition
   filts: Identifier[]; // Filter definition for this web page (E.G. how to identify)
-  seldefs: SelectorDef[]; // Selector definitions
+  MenuItems: Record<string,string>; // List of top menu items
+  videoSelectors: SelectorDef; // Identify main playing video order
+  browseables: SelectorDef[]; // Main browseable content
+  sidebar: SelectorDef[]; // Chat/Comment/Additional info/etc
+  continuation: SelectorDef[]; // Continue previous playing video
 }
 
 // === Transport formats ===

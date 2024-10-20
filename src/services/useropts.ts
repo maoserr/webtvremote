@@ -11,7 +11,7 @@ async function getStored<T>(key: string, def: T):Promise<T>{
   let user_def = await browser.storage.sync.get(key)
   if (user_def.hasOwnProperty(key)
     && (user_def[key] != null)) {
-    res = JSON.parse(user_def[key]) as T
+    res = JSON.parse(<string>user_def[key]) as T
   } else {
     res = def
   }
