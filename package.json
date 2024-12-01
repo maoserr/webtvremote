@@ -28,7 +28,7 @@
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "vue-loader": "^17.4.2",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
@@ -36,12 +36,12 @@
   },
   "dependencies": {
     "@medv/finder": "^3.2.0",
-    "@vueuse/core": "^11.2.0",
+    "@vueuse/core": "^12.0.0",
     "buffer": "^6.0.3",
     "path-browserify": "^1.0.1",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
-    "primevue": "^4.2.0",
+    "primevue": "^4.2.4",
     "vue": "^3.5.12",
     "webextension-polyfill": "^0.12.0"
   }
