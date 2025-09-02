@@ -22,27 +22,27 @@
   "devDependencies": {
     "@types/webextension-polyfill": "^0.12.3",
     "@vue/compiler-sfc": "^3.4.26",
-    "copy-webpack-plugin": "^13.0.0",
+    "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
-    "html-webpack-plugin": "^5.6.3",
+    "html-webpack-plugin": "^5.6.4",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.14",
-    "ts-loader": "^9.5.2",
+    "ts-loader": "^9.5.4",
     "typescript": "^5.9.2",
     "vue-loader": "^17.4.2",
-    "webpack": "^5.101.0",
+    "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
     "@medv/finder": "^4.0.2",
-    "@vueuse/core": "^13.6.0",
+    "@vueuse/core": "^13.9.0",
     "buffer": "^6.0.3",
     "path-browserify": "^1.0.1",
     "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
-    "primevue": "^4.3.7",
-    "vue": "^3.5.18",
+    "primevue": "^4.3.8",
+    "vue": "^3.5.20",
     "webextension-polyfill": "^0.12.0"
   }
 }
