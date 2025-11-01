@@ -30,18 +30,18 @@
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "vue-loader": "^17.4.2",
-    "webpack": "^5.102.0",
+    "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
     "@medv/finder": "^4.0.2",
-    "@vueuse/core": "^13.9.0",
+    "@vueuse/core": "^14.0.0",
     "buffer": "^6.0.3",
     "path-browserify": "^1.0.1",
     "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
-    "primevue": "^4.4.0",
+    "primevue": "^4.4.1",
     "vue": "^3.5.22",
     "webextension-polyfill": "^0.12.0"
   }
