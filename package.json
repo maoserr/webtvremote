@@ -24,25 +24,25 @@
     "@vue/compiler-sfc": "^3.4.26",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.1.4",
-    "html-webpack-plugin": "^5.6.7",
+    "html-webpack-plugin": "^5.6.8",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.6.1",
     "ts-loader": "^9.6.2",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "vue-loader": "^17.4.2",
-    "webpack": "^5.108.3",
-    "webpack-cli": "^7.1.0",
-    "webpack-dev-server": "^5.2.5"
+    "webpack": "^5.109.2",
+    "webpack-cli": "^7.2.2",
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "@medv/finder": "^4.0.2",
-    "@vueuse/core": "^14.3.0",
+    "@vueuse/core": "^14.4.0",
     "buffer": "^6.0.3",
     "path-browserify": "^1.0.1",
     "primeflex": "^4.0.0",
-    "primeicons": "^7.0.0",
-    "primevue": "^4.5.5",
-    "vue": "^3.5.39",
+    "primeicons": "^8.0.0",
+    "primevue": "^5.0.0",
+    "vue": "^3.5.40",
     "webextension-polyfill": "^0.12.0"
   }
 }
