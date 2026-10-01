@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/maoserr/webtvremote#readme",
   "devDependencies": {
-    "@types/webextension-polyfill": "^0.12.5",
+    "@types/webextension-polyfill": "^0.12.6",
     "@vue/compiler-sfc": "^3.4.26",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.1.5",
@@ -30,19 +30,19 @@
     "ts-loader": "^9.6.2",
     "typescript": "^7.0.2",
     "vue-loader": "^17.4.2",
-    "webpack": "^5.110.1",
+    "webpack": "^5.111.1",
     "webpack-cli": "^7.2.3",
     "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "@medv/finder": "^4.0.2",
-    "@vueuse/core": "^14.4.0",
+    "@vueuse/core": "^15.0.0",
     "buffer": "^6.0.3",
     "path-browserify": "^1.0.1",
     "primeflex": "^4.0.0",
-    "primeicons": "^8.0.0",
+    "primeicons": "^8.0.2",
     "primevue": "^5.0.1",
-    "vue": "^3.5.42",
+    "vue": "^3.5.43",
     "webextension-polyfill": "^0.12.0"
   }
 }
